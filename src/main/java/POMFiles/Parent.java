@@ -25,4 +25,9 @@ public class Parent {
     public void waitAndClick(WebElement element) {
         wait.until(ExpectedConditions.elementToBeClickable(element)).click();
     }
+
+    public String waitAndGetText(WebElement element){
+
+        return wait.until(ExpectedConditions.visibilityOf(element)).getText();
+    }
 }
