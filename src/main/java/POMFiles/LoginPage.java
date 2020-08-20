@@ -19,6 +19,9 @@ public class LoginPage extends Parent{
     @FindBy(css = "[aria-label=LOGIN]")
     private WebElement loginButton;
 
+    @FindBy(xpath = "//span[contains(@class,'username')]")
+    private WebElement verifyUserName;
+
     public void findElementAndClick(String element) {
         switch (element) {
             case "loginButton":
@@ -30,7 +33,6 @@ public class LoginPage extends Parent{
         waitAndClick(myElement);
     }
 
-
     public void findElementAndSendKeys(String element,String text) {
         switch (element) {
             case "userName":
@@ -41,5 +43,17 @@ public class LoginPage extends Parent{
                 break;
         }
         waitAndSendKeys(myElement,text);
+    }
+
+    public String findElementAndGetText(String element){
+        switch (element) {
+            case "verifyUserName":
+                myElement = verifyUserName;
+                break;
+
+        }
+
+        return waitAndGetText(myElement);
+
     }
 }
