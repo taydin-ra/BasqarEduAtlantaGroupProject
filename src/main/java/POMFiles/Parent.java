@@ -13,7 +13,7 @@ public class Parent {
 
     public Parent() {
         driver = Driver.getDriver();
-        wait = new WebDriverWait(driver,5);
+        wait = new WebDriverWait(driver,10);
     }
 
     public  void waitAndSendKeys(WebElement element, String text){
