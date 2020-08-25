@@ -20,14 +20,33 @@ public class Parent {
 
         wait.until(ExpectedConditions.visibilityOf(element)).clear();
         element.sendKeys(text);
-
     }
+
     public void waitAndClick(WebElement element) {
-        wait.until(ExpectedConditions.elementToBeClickable(element)).click();
+        try {
+            wait.until(ExpectedConditions.elementToBeClickable(element));
+        } catch (Exception e) {
+            System.out.println(e.getMessage());
+        }
+        element.click();
     }
 
     public String waitAndGetText(WebElement element){
 
         return wait.until(ExpectedConditions.visibilityOf(element)).getText();
+    }
+
+    public void clickOnFunctionalities(WebElement clickElement) {
+
+
+        try {
+            wait.until(ExpectedConditions.elementToBeClickable(clickElement));
+
+        } catch (Exception e) {
+            System.out.println(e.getMessage());
+        }
+
+
+        clickElement.click();
     }
 }

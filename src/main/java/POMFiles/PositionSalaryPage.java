@@ -4,6 +4,7 @@ import Utilities.Driver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
+import org.openqa.selenium.support.ui.ExpectedConditions;
 
 public class PositionSalaryPage extends Parent {
 
@@ -34,8 +35,6 @@ public class PositionSalaryPage extends Parent {
     public void findElementAndClickFunction(String elementName) {
 
         switch (elementName) {
-
-
             case "HumanResourcesButton":
                 myElement = HumanResourcesButton;
                 break;
@@ -44,16 +43,27 @@ public class PositionSalaryPage extends Parent {
                 myElement = Setup3Button;
                 break;
 
+            case "PositionSalary1Button":
+                myElement = PositionSalary1Button;
+                break;
+
             case "SaveButton":
                 myElement = SaveButton;
                 break;
 
-
-
-
         }
 
-        waitAndClick(myElement);
+       waitAndClick(myElement);
+    }
+
+    public void clickHumanResource(){
+        clickOnFunctionalities(HumanResourcesButton);
+    }
+    public void clickSetUp3(){
+        clickOnFunctionalities(Setup3Button);
+    }
+    public void clickPositionSalary(){
+        clickOnFunctionalities(PositionSalary1Button);
     }
 
     public void findElementAndSendKeys(String elementName, String text ){
