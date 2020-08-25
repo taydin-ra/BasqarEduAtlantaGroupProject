@@ -17,6 +17,7 @@ public class LoginSteps {
         Driver.getDriver().get(url);
     }
 
+
     @When("^Enter the username \"([^\"]*)\" and password \"([^\"]*)\"$")
     public void enter_the_username_and_password(String arg1, String arg2) {
         login.findElementAndSendKeys("userName", arg1);
