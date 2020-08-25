@@ -54,6 +54,7 @@ public class PositionSalaryPage extends Parent {
         }
 
        waitAndClick(myElement);
+        //
     }
 
     public void clickHumanResource(){
