@@ -22,6 +22,8 @@ public class Parent {
         element.sendKeys(text);
     }
 
+    //
+
     public void waitAndClick(WebElement element) {
         try {
             wait.until(ExpectedConditions.elementToBeClickable(element));
