@@ -22,7 +22,8 @@ public class PositionSalarySteps {
 
     @When("^User create a position salary name as \"([^\"]*)\"$")
     public void user_create_a_position_salary_name_as(String arg1) {
-        positionSalaryPage.findElementAndClickFunction("AddButton");
+       // positionSalaryPage.findElementAndClickFunction("AddButton");
+        positionSalaryPage.clickAddButton();
         positionSalaryPage.findElementAndSendKeys("NameInput", arg1);
         positionSalaryPage.findElementAndClickFunction("SaveButton");
     }

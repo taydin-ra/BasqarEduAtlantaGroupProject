@@ -50,7 +50,6 @@ public class PositionSalaryPage extends Parent {
             case "SaveButton":
                 myElement = SaveButton;
                 break;
-
         }
 
        waitAndClick(myElement);
@@ -67,6 +66,9 @@ public class PositionSalaryPage extends Parent {
         clickOnFunctionalities(PositionSalary1Button);
     }
 
+    public void clickAddButton(){
+        clickOnFunctionalities(AddButton);
+    }
     public void findElementAndSendKeys(String elementName, String text ){
         switch (elementName){
             case "NameInput":
