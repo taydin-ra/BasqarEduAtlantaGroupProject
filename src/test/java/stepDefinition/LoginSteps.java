@@ -24,7 +24,7 @@ public class LoginSteps {
         login.findElementAndSendKeys("password", arg2);
     }
 
-    @When("^Click on loggin button$")
+    @When("^Click on login button$")
     public void click_on_loggin_button() {
         login.findElementAndClick("loginButton");
     }

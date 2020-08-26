@@ -27,7 +27,8 @@ public class Parent {
     }
 
     public String waitAndGetText(WebElement element){
-
         return wait.until(ExpectedConditions.visibilityOf(element)).getText();
     }
+
+
 }
