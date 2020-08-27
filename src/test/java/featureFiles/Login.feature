@@ -5,3 +5,4 @@ Feature: Login functionallty
     When Enter the username "daulet2030@gmail.com" and password "TechnoStudy123@"
     And Click on loggin button
     Then I am logged in successfully
+    
