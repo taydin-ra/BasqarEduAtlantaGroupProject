@@ -7,16 +7,20 @@ import cucumber.api.java.en.And;
 import cucumber.api.java.en.Given;
 import cucumber.api.java.en.Then;
 import cucumber.api.java.en.When;
+import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.testng.Assert;
 
 public class LoginSteps {
+    WebDriver driver;
     LoginPage login = new LoginPage();
 
     @Given("^Navigate to Basqar: \"([^\"]*)\"$")
     public void navigate_to_Basqar(String url) {
 
         Driver.getDriver().get(url);
+        Driver.getDriver().manage().window().maximize();
+
     }
 
 
@@ -30,6 +34,7 @@ public class LoginSteps {
     public void i_am_logged_in_successfully() {
         String name = "D. Saurbekov";
 
+
        try {
            String verifyName = login.findElementAndGetText("verifyUserName");
             Assert.assertEquals(name,verifyName);
@@ -38,6 +43,8 @@ public class LoginSteps {
 
            Assert.assertTrue(login.findElementAndGetText("invalidUserOrPassword").contains("Invalid username or password"));
         }
+
+       
     }
 
     @When("^Enter the \"([^\"]*)\" and \"([^\"]*)\"$")
