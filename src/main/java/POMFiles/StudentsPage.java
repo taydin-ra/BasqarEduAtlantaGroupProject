@@ -6,8 +6,8 @@ import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
 
 public class StudentsPage extends Parent {
-    public StudentsPage(){
-        PageFactory.initElements(Driver.getDriver(),this);
+    public StudentsPage() {
+        PageFactory.initElements(Driver.getDriver(), this);
     }
 
     @FindBy(partialLinkText = "Student")
@@ -55,9 +55,11 @@ public class StudentsPage extends Parent {
     @FindBy(xpath = "//mat-select[@aria-label='Citizenship']")
     private WebElement CitizenshipDropdown;
 
+    @FindBy(xpath = "//mat-select[@aria-label='Document Type']")
+    private WebElement DocumentTypeDropdown;
 
-
-
+    @FindBy(css = "input[data-placeholder='Document Number']")
+    private WebElement DocumentNumberInput;
 
 
     WebElement myElement;
@@ -118,6 +120,11 @@ public class StudentsPage extends Parent {
                 myElement = CitizenshipDropdown;
                 break;
 
+            case "DocumentTypeDropdown":
+                myElement = DocumentTypeDropdown;
+                break;
+
+
         }
         waitAndClick(myElement);
     }
@@ -134,13 +141,12 @@ public class StudentsPage extends Parent {
                 myElement = LastNameInput;
                 break;
 
+            case "DocumentNumberInput":
+                myElement = DocumentNumberInput;
+                break;
         }
         waitAndSendKeys(myElement, value);
     }
-
-
-
-
 
 
 }

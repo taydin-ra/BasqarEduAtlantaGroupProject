@@ -29,8 +29,17 @@ public class StudentsSteps {
     }
 
     @And("^User sending input to form$")
-    public void user_sending_input_to_form() {
-        studentsPage.findElementAndSendKeysFunction("FirstNameInput", "Merve");
+    public void user_sending_input_to_form(DataTable elementsAndValues) {
+
+
+        List<List<String>> elementAndValueList = elementsAndValues.asLists(String.class);
+
+        for(int i = 0 ; i < elementAndValueList.size() ; i++){
+
+            studentsPage.findElementAndSendKeysFunction(elementAndValueList.get(i).get(0),elementAndValueList.get(i).get(1) );
+
+        }
+
     }
 
     @And("^Click in the form page$")
@@ -44,5 +53,7 @@ public class StudentsSteps {
 
         }
     }
+
+
 
 }

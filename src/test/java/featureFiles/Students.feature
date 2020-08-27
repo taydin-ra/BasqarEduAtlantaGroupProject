@@ -14,6 +14,8 @@ Feature: Students functionality
       | StudentsButton |
       | AddButton      |
     And User sending input to form
+      | FirstNameInput | Mina     |
+      | LastNameInput  | Yildiran |
     And Click in the form page
       | GenderDropdown           |
       | Option2                  |
@@ -25,8 +27,11 @@ Feature: Students functionality
       | Option1                  |
       | CitizenshipDropdown      |
       | Option5                  |
+      | DocumentTypeDropdown     |
+      | Option1                  |
 
     And User sending input to form
+      | DocumentNumberInput | 123456 |
     And Click in the form page
 
 
