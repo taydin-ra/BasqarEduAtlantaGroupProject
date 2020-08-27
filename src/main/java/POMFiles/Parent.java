@@ -35,7 +35,9 @@ public class Parent {
 
     public String waitAndGetText(WebElement element){
 
-        return wait.until(ExpectedConditions.visibilityOf(element)).getText();
+      return   wait.until(ExpectedConditions.visibilityOf(element)).getText();
+
+
     }
 
     public void clickOnFunctionalities(WebElement clickElement) {
