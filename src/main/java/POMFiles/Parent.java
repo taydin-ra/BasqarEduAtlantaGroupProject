@@ -14,6 +14,7 @@ public class Parent {
     public Parent() {
         driver = Driver.getDriver();
         wait = new WebDriverWait(driver,5);
+        driver.manage().window().maximize();
     }
 
     public  void waitAndSendKeys(WebElement element, String text){

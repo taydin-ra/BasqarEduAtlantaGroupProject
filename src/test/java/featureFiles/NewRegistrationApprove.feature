@@ -9,6 +9,17 @@ Feature: New registration approve test
   Scenario: Create a new registration approve
     Given  Navigate to Entrance Exams
     When  Create  a new registration approve
-    Then New registration approve is successfully
+    Then I click on add button
+    Given I enter text to follwing elements
+    Given I click on save button
+    Then New registration created is successfuly
+
+
+
+
+
+
+
+
 
 
