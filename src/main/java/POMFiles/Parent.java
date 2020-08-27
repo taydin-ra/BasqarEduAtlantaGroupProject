@@ -13,24 +13,18 @@ public class Parent {
 
     public Parent() {
         driver = Driver.getDriver();
-        wait = new WebDriverWait(driver,10);
+        wait = new WebDriverWait(driver,5);
+        driver.manage().window().maximize();
     }
 
     public  void waitAndSendKeys(WebElement element, String text){
 
         wait.until(ExpectedConditions.visibilityOf(element)).clear();
         element.sendKeys(text);
+
     }
-
-    //
-
     public void waitAndClick(WebElement element) {
-        try {
-            wait.until(ExpectedConditions.elementToBeClickable(element));
-        } catch (Exception e) {
-            System.out.println(e.getMessage());
-        }
-        element.click();
+        wait.until(ExpectedConditions.elementToBeClickable(element)).click();
     }
 
     public String waitAndGetText(WebElement element){
@@ -38,19 +32,5 @@ public class Parent {
       return   wait.until(ExpectedConditions.visibilityOf(element)).getText();
 
 
-    }
-
-    public void clickOnFunctionalities(WebElement clickElement) {
-
-
-        try {
-            wait.until(ExpectedConditions.elementToBeClickable(clickElement));
-
-        } catch (Exception e) {
-            System.out.println(e.getMessage());
-        }
-
-
-        clickElement.click();
     }
 }
