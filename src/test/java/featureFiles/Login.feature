@@ -15,7 +15,7 @@ Feature: Login functionallty
     Then Verify the error message due to invalid username or password
     Examples:
       | username             | password        |
-     #Invalid username and valid password
+     #Invalid username and valid password /
       | daulet203@gmail.com  | TechnoStudy123@ |
      #Invalid username and valid password
       | daulet2030@gmail.com | TechnoStudy123  |
