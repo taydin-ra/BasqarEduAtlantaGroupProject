@@ -33,4 +33,17 @@ public class Parent {
 
 
     }
+    public void clickOnFunctionalities(WebElement clickElement) {
+
+
+        try {
+            wait.until(ExpectedConditions.elementToBeClickable(clickElement));
+
+        } catch (Exception e) {
+            System.out.println(e.getMessage());
+        }
+
+
+        clickElement.click();
+    }
 }
