@@ -149,6 +149,3 @@ public class NewRegistrationPage extends Parent {
 }
 
 
-//ERSIN OZKAN: Create a new registration prove
-//Entrance Exam/Registration Approve
-

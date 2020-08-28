@@ -24,10 +24,11 @@ public class NewRegistrationSteps extends Parent {
     }
 
     @And("^I click on following elements$")
-    public void i_click_on_following_elements(DataTable ElementFromFeature)  {
+    public void i_click_on_following_elements(DataTable ElementFromFeature) throws InterruptedException {
         List<String> eachElement = ElementFromFeature.asList(String.class);
 
         for (int i = 0; i < eachElement.size(); i++) {
+            Thread.sleep(2000);
 
          newRegistrationPage.findElementAndClickFunctionality(eachElement.get(i));
 
@@ -39,13 +40,15 @@ public class NewRegistrationSteps extends Parent {
 
 
     @And("^I enter text to following elements$")
-    public void i_enter_text_to_following_elements(DataTable elementsAndValues) {
+    public void i_enter_text_to_following_elements(DataTable elementsAndValues) throws InterruptedException {
 
         List<List<String>> elementAndValueList = elementsAndValues.asLists(String.class);
 
         for(int i = 0 ; i < elementAndValueList.size() ; i++){
+            Thread.sleep(2000);
 
             newRegistrationPage.findElementAndSendKeysFunction(elementAndValueList.get(i).get(0),elementAndValueList.get(i).get(1) );
+
 
         }
 
