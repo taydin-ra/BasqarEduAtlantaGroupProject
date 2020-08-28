@@ -15,6 +15,7 @@ public class LoginSteps {
     public void navigate_to_Basqar(String url) {
 
         Driver.getDriver().get(url);
+        Driver.getDriver().manage().window().maximize();
     }
 
     @When("^Enter the username \"([^\"]*)\" and password \"([^\"]*)\"$")

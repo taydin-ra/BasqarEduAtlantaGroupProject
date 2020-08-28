@@ -11,31 +11,63 @@ public class NewRegistrationPage extends Parent {
     WebDriver driver;
 
 
-    public NewRegistrationPage(){
-        PageFactory.initElements(Driver.getDriver(),this);
+    public NewRegistrationPage() {
+        PageFactory.initElements(Driver.getDriver(), this);
     }
 
-    @FindBy(xpath = "//span[@class='nav-link-title ng-tns-c101-24 ng-star-inserted']")
+    @FindBy(partialLinkText = "Entrance Exams")
     private WebElement entranceExams;
 
-    @FindBy(xpath = "/html/body/app/vertical-layout-1/div/div/fuse-sidebar/navbar/navbar-vertical-style-1/div[2]/div[1]/div/div/fuse-navigation/div/fuse-nav-vertical-group/div/fuse-nav-vertical-collapsable[3]/div/fuse-nav-vertical-item[1]/a")
+    @FindBy(partialLinkText = "Registration Approve")
     private WebElement registrationApprove;
 
     @FindBy(xpath = "//ms-add-button[contains(@tooltip,'BUTTON.ADD')]//button")
     private WebElement addNewRegistration;
 
-    @FindBy(xpath = "//div[@class='mat-form-field-infix ng-tns-c147-295']")
-     private  WebElement gradeLevelOfRegistration;
+    @FindBy(xpath = "//mat-select[@aria-label='Grade Level of Registration']")
+    private WebElement gradeLevelOfRegistration;
 
-    @FindBy()
+    @FindBy(xpath = "(//mat-option)[1]")
+    private WebElement Option1;
+
+    @FindBy(xpath = "(//mat-option)[2]")
+    private WebElement Option2;
+
+    @FindBy(xpath = "//mat-select[@aria-label='Choose Exam']")
+    private WebElement chooseExam;
+
+    @FindBy(partialLinkText = "Student Information")
+    private WebElement studentInformation;
+
+
+    @FindBy(xpath = "//button[@color='accent']")
+    private WebElement saveButton;
+
+    @FindBy(xpath = "//ms-text-field[@formcontrolname='lastName']")
+    private WebElement lastName;
+    @FindBy(xpath = "//ms-text-field[@formcontrolname='firstName']")
+    private WebElement firstName;
+    @FindBy(xpath = "//input[@data-placeholder='Date of Birth']")
+    private WebElement dateOfBirth;
+    @FindBy(xpath = "//ms-text-field[@formcontrolname='personalId']")
+    private WebElement personalId;
+    @FindBy(xpath = "//mat-select[@aria-label='Gender']")
+    private WebElement gender;
+    @FindBy(xpath = "//mat-select[@aria-label='Citizenship']")
+    private WebElement citizenship;
+    @FindBy(xpath = "//mat-select[@aria-label='Nationality']")
+    private WebElement nationality;
+
+    @FindBy(partialLinkText = "Relative Info")
+    private WebElement relativeInfo;
 
 
 
     WebElement myElement;
 
-    public void findElementAndClickFunctionality(String elementName){
+    public void findElementAndClickFunctionality(String elementName) {
 
-        switch (elementName){
+        switch (elementName) {
 
             case "entranceExams":
                 myElement = entranceExams;
@@ -49,41 +81,71 @@ public class NewRegistrationPage extends Parent {
                 myElement = addNewRegistration;
                 break;
 
+            case "gradeLevelOfRegistration":
+                myElement = gradeLevelOfRegistration;
+                break;
 
+            case "Option1":
+                myElement = Option1;
+                break;
+            case "Option2":
+                myElement = Option2;
+                break;
+            case "chooseExam":
+                myElement = chooseExam;
+                break;
+
+            case "saveButton":
+                myElement = saveButton;
+                break;
+
+            case "gender":
+                myElement = gender;
+                break;
+            case "citizenship":
+                myElement = citizenship;
+                break;
+            case "nationality":
+                myElement = nationality;
+                break;
+
+            case "studentInformation":
+                myElement = studentInformation;
+                break;
+            case "relativeInfo":
+                myElement = relativeInfo;
+                break;
+            case "dateOfBirth":
+                myElement = dateOfBirth;
+                break;
 
         }
 
         waitAndClick(myElement);
     }
-//    public void findElementAndSendKeysFunction(String elementName, String value) {
-//
-//        switch (elementName) {
-//
-//            case "PayeeNameInput":
-//                myElement = PayeeNameInput;
-//                break;
 
-//            case "PayeeAddressInput":
-//                myElement = PayeeAddressInput;
-//                break;
-//
-//            case "AccountInput":
-//                myElement = AccountInput;
-//                break;
-//
-//            case "PayeeDetailsInput":
-//                myElement = PayeeDetailsInput;
-//                break;
-//
-//            case "AmountInput":
-//                myElement = AmountInput;
-//                break;
+    public void findElementAndSendKeysFunction(String elementName, String value) {
 
+        switch (elementName) {
 
-//        }
-//        sendKeysFunctionality(myElement, value);
-   // }
+            case "lastName":
+                myElement = lastName;
+                break;
 
+            case "firstName":
+                myElement = firstName;
+                break;
+
+            case "personalId":
+                myElement = personalId;
+                break;
+
+            case "dateOfBirth":
+                myElement = dateOfBirth;
+                break;
+        }
+        waitAndSendKeys(myElement, value);
+    }
 }
 
 
