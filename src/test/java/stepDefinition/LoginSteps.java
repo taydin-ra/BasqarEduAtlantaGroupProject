@@ -38,7 +38,7 @@ public class LoginSteps {
         String verifyName = login.findElementAndGetText("verifyUserName");
         Assert.assertEquals(name,verifyName);
 
-        }
+    }
 
     @When("^Enter the username \"([^\"]*)\" and password \"([^\"]*)\"$")
     public void enterTheUsernameAndPassword(String arg0, String arg1) throws Throwable {
