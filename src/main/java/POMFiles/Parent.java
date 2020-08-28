@@ -38,6 +38,9 @@ public class Parent {
         return   wait.until(ExpectedConditions.visibilityOf(element)).getText();
 
 
+     
+
+
     }
 
     public void clickOnFunctionalities(WebElement clickElement) {

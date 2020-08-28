@@ -50,11 +50,6 @@ public class PositionSalaryPage extends Parent {
             case "SaveButton":
                 myElement = SaveButton;
                 break;
-
-
-
-
-
         }
 
        waitAndClick(myElement);
