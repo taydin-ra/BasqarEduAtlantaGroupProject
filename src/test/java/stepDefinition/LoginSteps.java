@@ -29,7 +29,7 @@ public class LoginSteps {
     }
 
     @When("^Click on login button$")
-    public void click_on_loggin_button() {
+    public void click_on_login_button() {
         login.findElementAndClick("loginButton");
     }
 
