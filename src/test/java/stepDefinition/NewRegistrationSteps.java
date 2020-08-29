@@ -58,20 +58,21 @@ public class NewRegistrationSteps extends Parent {
 
     }
 
-    @And("^I click on sutudent info save button$")
-    public void i_click_on_sutudent_info_save_button() {
+
+
+    @Then("^I fill up following elements in the relative info page$")
+    public void i_fill_up_following_elements_in_the_relative_info_page() throws Throwable {
+
+    }
+    
+
+
+    @Then("^I click on student info save button$")
+    public void i_click_on_student_info_save_button() throws Throwable {
 
     }
 
-    @And("^I fill up following elements$")
-    public void i_fill_up_following_elements() {
 
-    }
-
-    @And("^I click Relative Info save button$")
-    public void i_click_Relative_Info_save_button() {
-
-    }
 
     @Then("^Created succesfuly New registration Approve$")
     public void created_succesfuly_New_registration_Approve() {
