@@ -72,13 +72,17 @@ public class SetupSchoolsSteps {
     }
 
     @When("^I select time zone from \"([^\"]*)\" drop down list$")
-    public void i_select_time_zone_from_drop_down_list(String arg1, DataTable table) {
-        List<List<String>> data = table.asLists(String.class);
+    public void i_select_time_zone_from_drop_down_list(String timeZone, DataTable table) {
+        List<String> data = table.asList(String.class);
+        schools.findElementAndClick(timeZone);
+        schools.findElementInListAndClick(data.get(0),schools.timeZoneList);
     }
 
     @When("^Select language from \"([^\"]*)\" drop down list$")
-    public void select_language_from_drop_down_list(String arg1, DataTable table) {
-        List<List<String>> data = table.asLists(String.class);
+    public void select_language_from_drop_down_list(String language, DataTable table) {
+        List<String> data = table.asList(String.class);
+        schools.findElementAndClick(language);
+        schools.findElementInListAndClick(data.get(0),schools.languageList);
     }
 
     @When("^I press \"([^\"]*)\" button$")

@@ -36,7 +36,7 @@ Feature: Checking all functionality of Setup Schools menu
     And I select currency from "Default Currency" drop down list
       | USD |
     And I select time zone from "Default Time Zone" drop down list
-      | US/Eastern |
+      | -04:00 - US/Eastern |
     And Select language from "Default Language" drop down list
       | English |
     And I press "Save" button

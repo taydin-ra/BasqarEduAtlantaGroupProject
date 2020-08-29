@@ -5,6 +5,9 @@ import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
 
+
+import java.util.List;
+
 public class SetupSchoolsPage extends Parent {
     WebElement myElement;
 
@@ -38,10 +41,10 @@ public class SetupSchoolsPage extends Parent {
 
     @FindBy(css = "ms-text-field[formcontrolname='shortName']>input")
     private WebElement shortNameSchool;
-@FindBy(xpath = "//mat-select[@aria-label='Phone Mask']/div/div/span")
+    @FindBy(xpath = "//mat-select[@aria-label='Phone Mask']/div/div/span")
     private WebElement phoneMask;
-@FindBy(xpath = "//span[contains(text(),'Mask 1')]")
-private WebElement mask1;
+    @FindBy(xpath = "//span[contains(text(),'Mask 1')]")
+    private WebElement mask1;
 
     @FindBy(xpath = "//span[contains(text(),'Mask 2')]")
     private WebElement mask2;
@@ -56,11 +59,19 @@ private WebElement mask1;
     @FindBy(xpath = "//span[contains(text(),'EUR')]")
     private WebElement eur;
 
-  //  div[id="mat-select-6-panel"]>mat-option>span
+    @FindBy(xpath = "//span[contains(text(),'Default Time Zone')]")
+    private WebElement timeZone;
+
+    @FindBy(css = "div[id='mat-select-6-panel']>mat-option>span")
+    public List<WebElement> timeZoneList;
+
+    @FindBy(css = "mat-select[formcontrolname='language']>div>div")
+    private WebElement language;
+
+    @FindBy(css = "div[id='mat-select-7-panel']>mat-option")
+    public List<WebElement> languageList;
 
 
-
-  //  formcontrolname="phoneMask"
     public void findElementAndClick(String element) {
         switch (element) {
             case "Got it":
@@ -100,6 +111,13 @@ private WebElement mask1;
             case "EUR":
                 myElement = eur;
                 break;
+            case "Default Time Zone":
+                myElement = timeZone;
+                break;
+
+            case "Default Language:":
+                myElement = language;
+                break;
         }
         waitAndClick(myElement);
     }
@@ -117,7 +135,7 @@ private WebElement mask1;
     }
 
 
-        public String findElementAndGetText (String element){
+    public String findElementAndGetText(String element) {
         switch (element) {
             case "Schools":
                 myElement = schoolsGetText;
@@ -132,4 +150,14 @@ private WebElement mask1;
 
     }
 
+    public void findElementInListAndClick(String element,List<WebElement> webElements) {
+
+        for (int i = 0; i < webElements.size(); i++) {
+            if (webElements.get(i).getText().trim().contains(element.trim())) {
+                myElement = webElements.get(i);
+                break;
+            }
+        }
+        waitAndClick(myElement);
+    }
 }
