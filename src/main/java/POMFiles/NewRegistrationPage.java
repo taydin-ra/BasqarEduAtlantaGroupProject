@@ -1,6 +1,7 @@
 package POMFiles;
 
 import Utilities.Driver;
+import gherkin.lexer.Th;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
@@ -36,32 +37,103 @@ public class NewRegistrationPage extends Parent {
     @FindBy(xpath = "//mat-select[@aria-label='Choose Exam']")
     private WebElement chooseExam;
 
-    @FindBy(partialLinkText = "Student Information")
+    @FindBy(xpath = "//div[contains(text(),'Student Information')]")
     private WebElement studentInformation;
 
 
     @FindBy(xpath = "//button[@color='accent']")
     private WebElement saveButton;
-
+    // to click lastname
     @FindBy(xpath = "//ms-text-field[@formcontrolname='lastName']")
     private WebElement lastName;
-    @FindBy(xpath = "//ms-text-field[@formcontrolname='firstName']")
+    // to fill out lastname
+    @FindBy(xpath = "//ms-text-field[@formcontrolname='lastName']//input")
+    private WebElement lastNameTextBox;
+   // to click firstname
+    @FindBy(css = "ms-text-field[formcontrolname='firstName']")
     private WebElement firstName;
-    @FindBy(xpath = "//input[@data-placeholder='Date of Birth']")
+    // to fill out firstname
+    @FindBy(css = "ms-text-field[formcontrolname='firstName']>input")
+    private WebElement firstNameTextBox;
+
+
+    @FindBy(xpath = "  //input[@name='datePickerControl']")
+
     private WebElement dateOfBirth;
+    @FindBy(xpath = "//input[@data-placeholder='Date of Birth']")
+    //input[@name='datePickerControl']/following-sibling::input
+    private WebElement dateOfBirthTextBox;
+    // to click personalid
     @FindBy(xpath = "//ms-text-field[@formcontrolname='personalId']")
     private WebElement personalId;
+     // to fill out personal id
+    @FindBy(xpath = "//ms-text-field[@formcontrolname='personalId']//input")
+    private WebElement personalIdTextBox;
+
+    // to click on gender
     @FindBy(xpath = "//mat-select[@aria-label='Gender']")
     private WebElement gender;
+    // to click male
+    @FindBy(css = ".cdk-overlay-pane mat-option:first-child")
+    private WebElement genderMAle;
+
+    // to click on citizenship
     @FindBy(xpath = "//mat-select[@aria-label='Citizenship']")
     private WebElement citizenship;
+    // to select option1
+    @FindBy(css = ".cdk-overlay-pane mat-option:first-child")
+    private WebElement citizenOption;
+
+    // to click on nationality
     @FindBy(xpath = "//mat-select[@aria-label='Nationality']")
     private WebElement nationality;
+    // to select option1
+    @FindBy(css = ".cdk-overlay-pane mat-option:first-child")
+    private WebElement nationalityOption;
 
     @FindBy(partialLinkText = "Relative Info")
     private WebElement relativeInfo;
 
+    public void FirstName(String value) throws InterruptedException {
+       // clickOnFunctionalities(firstName);
+        Thread.sleep(2000);
+        firstNameTextBox.sendKeys(value);
+    }
 
+    public void LastName(String value) throws InterruptedException {
+        clickOnFunctionalities(lastName);
+        Thread.sleep(2000);
+        lastNameTextBox.sendKeys(value);
+    }
+
+    public void PersonalId(String value) throws InterruptedException {
+        clickOnFunctionalities(personalId);
+        Thread.sleep(2000);
+        personalIdTextBox.sendKeys(value);
+    }
+
+    public void ClickOnGender() throws InterruptedException {
+        clickOnFunctionalities(gender);
+        clickOnFunctionalities(genderMAle);
+    }
+
+    public void dateOfBirth(String value) throws InterruptedException {
+        clickOnFunctionalities(dateOfBirth);
+        Thread.sleep(2000);
+       dateOfBirthTextBox.sendKeys(value);
+    }
+
+    public void ClickOnCitizen() throws InterruptedException {
+        clickOnFunctionalities(citizenship);
+        clickOnFunctionalities(citizenOption);
+
+    }
+
+    public void ClickOnNationality() throws InterruptedException {
+        clickOnFunctionalities(nationality);
+        clickOnFunctionalities(nationalityOption);
+
+    }
 
     WebElement myElement;
 
@@ -120,7 +192,6 @@ public class NewRegistrationPage extends Parent {
                 break;
 
         }
-
         waitAndClick(myElement);
     }
 
@@ -144,7 +215,7 @@ public class NewRegistrationPage extends Parent {
                 myElement = dateOfBirth;
                 break;
         }
-        waitAndSendKeys(myElement, value);
+        SendKeys(myElement, value);
     }
 }
 
