@@ -76,6 +76,7 @@ public class SetupSchoolsSteps {
         List<String> data = table.asList(String.class);
         schools.findElementAndClick(timeZone);
         schools.findElementInListAndClick(data.get(0),schools.timeZoneList);
+
     }
 
     @When("^Select language from \"([^\"]*)\" drop down list$")
@@ -83,6 +84,7 @@ public class SetupSchoolsSteps {
         List<String> data = table.asList(String.class);
         schools.findElementAndClick(language);
         schools.findElementInListAndClick(data.get(0),schools.languageList);
+
     }
 
     @When("^I press \"([^\"]*)\" button$")
