@@ -62,7 +62,7 @@ public class SetupSchoolsPage extends Parent {
     @FindBy(xpath = "//span[contains(text(),'Default Time Zone')]")
     private WebElement timeZone;
 
-    @FindBy(css = "div[id='mat-select-6-panel']>mat-option>span")
+    @FindBy(css = "div[class='cdk-overlay-pane']>div>div>mat-option")
     public List<WebElement> timeZoneList;
 
     @FindBy(css = "mat-select[formcontrolname='language']>div>div")
@@ -70,6 +70,52 @@ public class SetupSchoolsPage extends Parent {
 
     @FindBy(css = "div[id='mat-select-7-panel']>mat-option")
     public List<WebElement> languageList;
+
+    @FindBy(xpath = "//span[contains(text(),'Save')]")
+    private WebElement saveButton;
+
+    @FindBy(xpath = "//div[contains(text(),'Address Info')]/..")
+    public WebElement addressInfoPage;
+    @FindBy(xpath = "//div[contains(text(),'School Info')]/..")
+    public WebElement schoolInfoPage;
+
+    @FindBy(css = "ms-textarea-field[formcontrolname=\"street\"]>textarea")
+    private WebElement street;
+
+    @FindBy(xpath = "(//span[contains(text(),'Country')])[1]")
+    private WebElement country;
+
+    @FindBy(css = "div[class='cdk-overlay-pane']>div>div>mat-option")
+    public List<WebElement> countryList;
+
+    @FindBy(xpath = "(//span[contains(text(),'City')])[1]")
+    private WebElement city;
+
+    @FindBy(css = "div[class='cdk-overlay-pane']>div>div>mat-option")
+    public List<WebElement> cityList;
+
+    @FindBy(css = "ms-text-field[formcontrolname='postalCode']>input")
+    private WebElement postalCode;
+
+    @FindBy(xpath = "//div[contains(text(),'successfully')]")
+    private WebElement SuccessfullyMessage;
+
+    @FindBy(xpath = "(//*[@data-icon='arrow-left'])[2]")
+    public WebElement leftArrowButton;
+
+    @FindBy(xpath = "//td[contains(text(),'1')]/following-sibling::td[1]")
+    private WebElement schoolNameOnList;
+
+    @FindBy(xpath = "(//*[@data-icon='edit'])[1]")
+    private WebElement editButton;
+
+@FindBy(xpath = "(//*[@data-icon=\"trash-alt\"])[1]")
+private WebElement delete;
+
+@FindBy(xpath = "//span[contains(text(),'Yes')]")
+private WebElement yesButton;
+
+
 
 
     public void findElementAndClick(String element) {
@@ -101,7 +147,6 @@ public class SetupSchoolsPage extends Parent {
             case "Default Currency":
                 myElement = currency;
                 break;
-
             case "KZT":
                 myElement = kzt;
                 break;
@@ -114,10 +159,31 @@ public class SetupSchoolsPage extends Parent {
             case "Default Time Zone":
                 myElement = timeZone;
                 break;
-
-            case "Default Language:":
+            case "Default Language":
                 myElement = language;
                 break;
+            case "Save":
+                myElement = saveButton;
+                break;
+            case "Country":
+                myElement = country;
+                break;
+            case "City":
+                myElement = city;
+                break;
+            case "LeftArrowButton":
+                myElement = leftArrowButton;
+                break;
+            case "Edit":
+                myElement = editButton;
+                break;
+            case "Delete":
+                myElement = delete;
+                break;
+            case "Yes":
+                myElement = yesButton;
+                break;
+
         }
         waitAndClick(myElement);
     }
@@ -129,6 +195,12 @@ public class SetupSchoolsPage extends Parent {
                 break;
             case "Short Name":
                 myElement = shortNameSchool;
+                break;
+            case "Street":
+                myElement = street;
+                break;
+            case "Postal Code":
+                myElement = postalCode;
                 break;
         }
         waitAndSendKeys(myElement, text);
@@ -143,21 +215,30 @@ public class SetupSchoolsPage extends Parent {
             case "New School":
                 myElement = newSchoolText;
                 break;
-
-
+            case "successElement":
+                myElement = SuccessfullyMessage;
+                break;
+            case "Deneme High School":
+                myElement = schoolNameOnList;
+                break;
+            case "Erzincan High School":
+                myElement = schoolNameOnList;
+                break;
         }
         return waitAndGetText(myElement);
-
     }
 
-    public void findElementInListAndClick(String element,List<WebElement> webElements) {
+    public void findElementInListAndClick(String option, List<WebElement> webElements) {
 
         for (int i = 0; i < webElements.size(); i++) {
-            if (webElements.get(i).getText().trim().contains(element.trim())) {
+            if (webElements.get(i).getText().trim().contains(option.trim())) {
                 myElement = webElements.get(i);
                 break;
             }
         }
         waitAndClick(myElement);
+    }
+    public String findElementAndGetAttribute(WebElement element, String attribute) {
+        return waitAndGetAttribute(element,attribute);
     }
 }

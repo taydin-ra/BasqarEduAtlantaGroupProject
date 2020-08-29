@@ -1,6 +1,7 @@
 package stepDefinition;
 
 import POMFiles.SetupSchoolsPage;
+import Utilities.Driver;
 import cucumber.api.DataTable;
 import cucumber.api.PendingException;
 import cucumber.api.java.en.*;
@@ -13,7 +14,11 @@ public class SetupSchoolsSteps {
 
     @And("^I click on \"([^\"]*)\" button on cokkies dialog$")
     public void iClickOnButtonOnCokkiesDialog(String gotIt) {
-        schools.findElementAndClick(gotIt);
+        try {
+            schools.findElementAndClick(gotIt);
+        }catch(Exception e){
+            System.out.println("Cookies already clicked");
+        }
     }
 
     @When("^I navigate to \"([^\"]*)\" menu$")
@@ -75,7 +80,7 @@ public class SetupSchoolsSteps {
     public void i_select_time_zone_from_drop_down_list(String timeZone, DataTable table) {
         List<String> data = table.asList(String.class);
         schools.findElementAndClick(timeZone);
-        schools.findElementInListAndClick(data.get(0),schools.timeZoneList);
+        schools.findElementInListAndClick(data.get(0), schools.timeZoneList);
 
     }
 
@@ -83,50 +88,106 @@ public class SetupSchoolsSteps {
     public void select_language_from_drop_down_list(String language, DataTable table) {
         List<String> data = table.asList(String.class);
         schools.findElementAndClick(language);
-        schools.findElementInListAndClick(data.get(0),schools.languageList);
+        schools.findElementInListAndClick(data.get(0), schools.languageList);
 
     }
 
     @When("^I press \"([^\"]*)\" button$")
-    public void i_press_button(String arg1) {
+    public void i_press_button(String saveButton) {
+        schools.findElementAndClick(saveButton);
     }
 
+
     @Then("^I should be in \"([^\"]*)\" page$")
-    public void i_should_be_in_page(String arg1) {
+    public void i_should_be_in_page(String adressInfoPage) {
+        //aria-selected atribute value becomes true if it was selected, i check if it is selected
+//        Assert.assertEquals("true", schools.addressInfoPage.getAttribute("aria-selected"));
+
+        String attribute = schools.findElementAndGetAttribute(schools.addressInfoPage,"aria-selected");
+        Assert.assertEquals("true",attribute );
     }
 
     @When("^I enter the \"([^\"]*)\" and \"([^\"]*)\"$")
-    public void i_enter_the_and(String arg1, String arg2, DataTable table) {
-        List<List<String>> data = table.asLists(String.class);
+    public void i_enter_the_and(String street, String country, DataTable table) {
+        List<String> data = table.asList(String.class);
+        schools.findElementAndSendKeys(street, data.get(0));
+        schools.findElementAndClick(country);
+        schools.findElementInListAndClick(data.get(1), schools.countryList);
     }
 
     @When("^I select \"([^\"]*)\" from drop down list$")
-    public void i_select_from_drop_down_list(String arg1, DataTable table) {
-        List<List<String>> data = table.asLists(String.class);
+    public void i_select_from_drop_down_list(String city, DataTable table) {
+        List<String> data = table.asList(String.class);
+        schools.findElementAndClick(city);
+        schools.findElementInListAndClick(data.get(0), schools.cityList);
     }
 
     @When("^I enter \"([^\"]*)\"$")
-    public void i_enter(String arg1, DataTable table) {
-        List<List<String>> data = table.asLists(String.class);
+    public void i_enter(String postalCode, DataTable table) {
+        List<String> data = table.asList(String.class);
+        schools.findElementAndSendKeys(postalCode, data.get(0));
     }
 
     @When("^I click on \"([^\"]*)\" button$")
-    public void i_click_on_button(String arg1) {
-
+    public void i_click_on_button(String saveButton) {
+        schools.findElementAndClick(saveButton);
     }
 
     @Then("^I should get \"([^\"]*)\" message$")
-    public void i_should_get_message(String arg1) {
-
+    public void i_should_get_message(String success) {
+        String message = schools.findElementAndGetText("successElement");
+        Assert.assertEquals(message, success);
     }
 
     @When("^I press the left arrow button to go to school list page$")
     public void i_press_the_left_arrow_button_to_go_to_school_list_page() {
+        schools.findElementAndClick("LeftArrowButton");
     }
 
     @Then("^I should see the new school name on the list$")
-    public void i_should_see_the_new_school_name_on_the_list() {
+    public void i_should_see_the_new_school_name_on_the_list(DataTable table) {
+        List<String> data = table.asList(String.class);
+        String schoolNameOnList = schools.findElementAndGetText(data.get(0));
+        Assert.assertEquals(schoolNameOnList, data.get(0));
     }
 
+    // Scenario Editing an existing school
+    @Given("^I click \"([^\"]*)\" button for Deneme High School from the list$")
+    public void i_click_button_for_Deneme_High_School_from_the_list(String editButton)  {
 
+schools.findElementAndClick(editButton);
+
+    }
+
+    @Then("School Info page should be open$")
+    public void page_should_be_open()  {
+       String attribute = schools.findElementAndGetAttribute(schools.schoolInfoPage,"aria-selected");
+        Assert.assertEquals("true",attribute );
+    }
+
+    @When("^I enter new \"([^\"]*)\" and new \"([^\"]*)\"$")
+    public void i_enter_new_and_new(String newName, String newShortName, DataTable table)  {
+        List<String> data = table.asList(String.class);
+        schools.findElementAndSendKeys(newName,data.get(0));
+        schools.findElementAndSendKeys(newShortName,data.get(1));
+
+    }
+
+    @Then("^I should see the updated name$")
+    public void i_should_see_the_updated_name(DataTable table)  {
+        List<String> data = table.asList(String.class);
+        String schoolNameOnList = schools.findElementAndGetText(data.get(0));
+        Assert.assertEquals(schoolNameOnList, data.get(0));
+    }
+
+    @Given("^I click \"([^\"]*)\" button$")
+    public void iClickButton(String delete){
+schools.findElementAndClick(delete);
+
+    }
+
+    @And("^I click on \"([^\"]*)\" button on pop-up dialog$")
+    public void iClickOnButtonOnPopUpDialog(String yes) {
+schools.findElementAndClick(yes);
+    }
 }
