@@ -62,7 +62,7 @@ public class NewRegistrationPage extends Parent {
     private WebElement dateOfBirth;
     @FindBy(xpath = "//input[@data-placeholder='Date of Birth']")
     //input[@name='datePickerControl']/following-sibling::input
-    private WebElement dateOfBirthTextBox;
+    public WebElement dateOfBirthTextBox;
     // to click personalid
     @FindBy(xpath = "//ms-text-field[@formcontrolname='personalId']")
     private WebElement personalId;

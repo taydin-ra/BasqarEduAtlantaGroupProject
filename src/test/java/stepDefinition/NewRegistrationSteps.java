@@ -2,9 +2,11 @@ package stepDefinition;
 
 import POMFiles.NewRegistrationPage;
 import POMFiles.Parent;
+import Utilities.Driver;
 import cucumber.api.DataTable;
 import cucumber.api.java.en.*;
 import org.openqa.selenium.By;
+import org.openqa.selenium.interactions.Actions;
 
 import java.util.List;
 import java.util.Map;
@@ -46,6 +48,8 @@ public class NewRegistrationSteps extends Parent {
         newRegistrationPage.FirstName(elementAndValuesList.get("firstName"));
         newRegistrationPage.PersonalId(elementAndValuesList.get("personalId"));
         newRegistrationPage.dateOfBirth(elementAndValuesList.get("dateOfBirth"));
+        Actions actions = new Actions(Driver.getDriver());
+        actions.moveToElement(newRegistrationPage.dateOfBirthTextBox).click().perform();
 
     }
 
