@@ -64,7 +64,7 @@ public class NewRegistrationSteps extends Parent {
     public void i_fill_up_following_elements_in_the_relative_info_page() throws Throwable {
 
     }
-    
+
 
 
     @Then("^I click on student info save button$")

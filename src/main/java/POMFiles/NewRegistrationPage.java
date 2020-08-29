@@ -57,7 +57,7 @@ public class NewRegistrationPage extends Parent {
     private WebElement firstNameTextBox;
 
 
-    @FindBy(xpath = "  //input[@name='datePickerControl']")
+    @FindBy(xpath = "//input[@name='datePickerControl']/parent::div")
 
     private WebElement dateOfBirth;
     @FindBy(xpath = "//input[@data-placeholder='Date of Birth']")

@@ -22,7 +22,6 @@ Feature: New registration approve test
       | personalId  | 123        |
       | dateOfBirth | 01/01/1982 |
     And I click on following elements gender, citizenship and nationality in the Student information
-    And I click Relative Info save button
     And I fill up following elements in the relative info page
     And I click on student info save button
     Then Created succesfuly New registration Approve
