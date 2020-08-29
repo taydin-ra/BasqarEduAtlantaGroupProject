@@ -4,22 +4,26 @@ import POMFiles.NewRegistrationPage;
 import POMFiles.Parent;
 import cucumber.api.DataTable;
 import cucumber.api.java.en.*;
+import org.openqa.selenium.By;
 
 import java.util.List;
+import java.util.Map;
 
 public class NewRegistrationSteps extends Parent {
     NewRegistrationPage newRegistrationPage = new NewRegistrationPage();
 
     @Given("^Navigate to Entrance Exams$")
-    public void navigate_to_Entrance_Exams()  {
-      newRegistrationPage.findElementAndClickFunctionality("entranceExams");
+    public void navigate_to_Entrance_Exams() {
+        newRegistrationPage.findElementAndClickFunctionality("entranceExams");
     }
+
     @When("^Create  a new registration approve$")
     public void create_a_new_registration_approve() {
         newRegistrationPage.findElementAndClickFunctionality("registrationApprove");
     }
+
     @Then("^I click on add button$")
-    public void new_registration_approve_is_successfully()  {
+    public void new_registration_approve_is_successfully() {
         newRegistrationPage.findElementAndClickFunctionality("addNewRegistration");
     }
 
@@ -29,29 +33,28 @@ public class NewRegistrationSteps extends Parent {
 
         for (int i = 0; i < eachElement.size(); i++) {
             Thread.sleep(2000);
-
-         newRegistrationPage.findElementAndClickFunctionality(eachElement.get(i));
+            newRegistrationPage.findElementAndClickFunctionality(eachElement.get(i));
 
         }
+    }
 
+    @Then("^I enter text to following elements$")
+    public void i_enter_text_to_following_elements_and(DataTable elementAndValues) throws InterruptedException {
+        Map<String, String> elementAndValuesList = elementAndValues.asMap(String.class, String.class);
+
+        newRegistrationPage.LastName(elementAndValuesList.get("lastName"));
+        newRegistrationPage.FirstName(elementAndValuesList.get("firstName"));
+        newRegistrationPage.PersonalId(elementAndValuesList.get("personalId"));
+        newRegistrationPage.dateOfBirth(elementAndValuesList.get("dateOfBirth"));
 
     }
 
 
-
-    @And("^I enter text to following elements$")
-    public void i_enter_text_to_following_elements(DataTable elementsAndValues) throws InterruptedException {
-
-        List<List<String>> elementAndValueList = elementsAndValues.asLists(String.class);
-
-        for(int i = 0 ; i < elementAndValueList.size() ; i++){
-            Thread.sleep(2000);
-
-            newRegistrationPage.findElementAndSendKeysFunction(elementAndValueList.get(i).get(0),elementAndValueList.get(i).get(1) );
-
-
-        }
-
+    @Then("^I click on following elements gender, citizenship and nationality in the Student information$")
+    public void i_click_on_following_elements_in_the_Student_information() throws Throwable {
+        newRegistrationPage.ClickOnGender();
+        newRegistrationPage.ClickOnCitizen();
+        newRegistrationPage.ClickOnNationality();
 
     }
 
@@ -71,10 +74,9 @@ public class NewRegistrationSteps extends Parent {
     }
 
     @Then("^Created succesfuly New registration Approve$")
-    public void created_succesfuly_New_registration_Approve()  {
+    public void created_succesfuly_New_registration_Approve() {
 
     }
-
 
 
 }

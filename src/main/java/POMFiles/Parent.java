@@ -13,15 +13,21 @@ public class Parent {
 
     public Parent() {
         driver = Driver.getDriver();
-        wait = new WebDriverWait(driver,10);
+        wait = new WebDriverWait(driver, 10);
     }
 
-    public  void waitAndSendKeys(WebElement element, String text){
+    public void waitAndSendKeys(WebElement element, String text) {
 
         wait.until(ExpectedConditions.visibilityOf(element)).clear();
         element.sendKeys(text);
     }
 
+    public void SendKeys(WebElement element, String value) {
+
+        element.sendKeys(value);
+
+
+    }
     //
 
     public void waitAndClick(WebElement element) {
@@ -33,12 +39,9 @@ public class Parent {
         element.click();
     }
 
-    public String waitAndGetText(WebElement element){
+    public String waitAndGetText(WebElement element) {
 
-        return   wait.until(ExpectedConditions.visibilityOf(element)).getText();
-
-
-     
+        return wait.until(ExpectedConditions.visibilityOf(element)).getText();
 
 
     }
