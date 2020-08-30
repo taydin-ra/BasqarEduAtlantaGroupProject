@@ -4,8 +4,6 @@ import Utilities.Driver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
-
-
 import java.util.List;
 
 public class SetupSchoolsPage extends Parent {
@@ -41,8 +39,10 @@ public class SetupSchoolsPage extends Parent {
 
     @FindBy(css = "ms-text-field[formcontrolname='shortName']>input")
     private WebElement shortNameSchool;
+
     @FindBy(xpath = "//mat-select[@aria-label='Phone Mask']/div/div/span")
     private WebElement phoneMask;
+
     @FindBy(xpath = "//span[contains(text(),'Mask 1')]")
     private WebElement mask1;
 
@@ -54,8 +54,10 @@ public class SetupSchoolsPage extends Parent {
 
     @FindBy(xpath = "//span[contains(text(),'KZT')]")
     private WebElement kzt;
+
     @FindBy(xpath = "//span[contains(text(),'USD')]")
     private WebElement usd;
+
     @FindBy(xpath = "//span[contains(text(),'EUR')]")
     private WebElement eur;
 
@@ -76,6 +78,7 @@ public class SetupSchoolsPage extends Parent {
 
     @FindBy(xpath = "//div[contains(text(),'Address Info')]/..")
     public WebElement addressInfoPage;
+
     @FindBy(xpath = "//div[contains(text(),'School Info')]/..")
     public WebElement schoolInfoPage;
 
@@ -109,14 +112,11 @@ public class SetupSchoolsPage extends Parent {
     @FindBy(xpath = "(//*[@data-icon='edit'])[1]")
     private WebElement editButton;
 
-@FindBy(xpath = "(//*[@data-icon=\"trash-alt\"])[1]")
-private WebElement delete;
+    @FindBy(xpath = "(//*[@data-icon=\"trash-alt\"])[1]")
+    private WebElement delete;
 
-@FindBy(xpath = "//span[contains(text(),'Yes')]")
-private WebElement yesButton;
-
-
-
+    @FindBy(xpath = "//span[contains(text(),'Yes')]")
+    private WebElement yesButton;
 
     public void findElementAndClick(String element) {
         switch (element) {
@@ -183,7 +183,6 @@ private WebElement yesButton;
             case "Yes":
                 myElement = yesButton;
                 break;
-
         }
         waitAndClick(myElement);
     }
@@ -205,7 +204,6 @@ private WebElement yesButton;
         }
         waitAndSendKeys(myElement, text);
     }
-
 
     public String findElementAndGetText(String element) {
         switch (element) {
@@ -238,7 +236,8 @@ private WebElement yesButton;
         }
         waitAndClick(myElement);
     }
+
     public String findElementAndGetAttribute(WebElement element, String attribute) {
-        return waitAndGetAttribute(element,attribute);
+        return waitAndGetAttribute(element, attribute);
     }
 }

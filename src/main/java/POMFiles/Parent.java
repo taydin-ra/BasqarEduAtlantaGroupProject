@@ -50,7 +50,7 @@ public class Parent {
         clickElement.click();
     }
 
-    public String waitAndGetAttribute(WebElement element,String attribute){
+    public String waitAndGetAttribute(WebElement element, String attribute){
 
         return wait.until(ExpectedConditions.visibilityOf(element)).getAttribute(attribute);
     }
