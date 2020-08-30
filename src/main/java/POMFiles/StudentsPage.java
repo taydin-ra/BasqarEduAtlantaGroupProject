@@ -10,6 +10,10 @@ public class StudentsPage extends Parent {
         PageFactory.initElements(Driver.getDriver(), this);
     }
 
+
+    @FindBy(css = "a[aria-label='dismiss cookie message']")
+    private WebElement cookieMessageButton;
+
     @FindBy(partialLinkText = "Student")
     private WebElement StudentButton;
 
@@ -56,10 +60,47 @@ public class StudentsPage extends Parent {
     private WebElement CitizenshipDropdown;
 
     @FindBy(xpath = "//mat-select[@aria-label='Document Type']")
-    private WebElement DocumentTypeDropdown;
+    public WebElement DocumentTypeDropdown;
 
     @FindBy(css = "input[data-placeholder='Document Number']")
     private WebElement DocumentNumberInput;
+
+    @FindBy(xpath = "//div[contains(text(),'Representatives')]")
+    private WebElement RepresentativesButton;
+
+    @FindBy(css = "ms-add-button[tooltip='GENERAL.BUTTON.ADD_REPRESENTATIVE'] >div>button")
+    private WebElement PopUpPlusButton;
+
+    @FindBy(xpath = "//mat-select[@aria-label='Representative']")
+    private WebElement RepresentativesDropdown;
+
+    @FindBy(css = "input[data-placeholder='First Name']")
+    private WebElement PopUpFirstNameInput;
+
+    @FindBy(css = "input[data-placeholder='Last Name']")
+    private WebElement PopUpLastNameInput;
+
+    @FindBy(css = "input[formcontrolname='phone']")
+    private WebElement PopUpMobilePhoneInput;
+
+    @FindBy(css = "mat-form-field[formgroupname='country']")
+    private WebElement PopUpCountryButton;
+
+    @FindBy(xpath = "//div[@fxlayoutalign='start stretch']/button")
+    private WebElement PopUpAddButton;
+
+    @FindBy(xpath = "//ms-save-button//button")
+    private WebElement SaveButton;
+
+    @FindBy(css = "mat-select[aria-label='Entry From']")
+    private WebElement PopUpEntryFromButton;
+
+    @FindBy(css = "ms-save-button[class='ng-star-inserted']>button")
+    private WebElement EnrollmentSaveButton;
+
+    // //*[@role='alertdialog']//.. alert icin bak
+
+
 
 
     WebElement myElement;
@@ -67,6 +108,11 @@ public class StudentsPage extends Parent {
     public void findElementAndClickFunctionality(String elementName) {
 
         switch (elementName) {
+
+
+            case "cookieMessageButton":
+                myElement = cookieMessageButton;
+                break;
 
             case "StudentButton":
                 myElement = StudentButton;
@@ -124,6 +170,39 @@ public class StudentsPage extends Parent {
                 myElement = DocumentTypeDropdown;
                 break;
 
+            case "RepresentativesButton":
+                myElement = RepresentativesButton;
+                break;
+
+            case "PopUpPlusButton":
+                myElement = PopUpPlusButton;
+                break;
+
+            case "RepresentativesDropdown":
+                myElement = RepresentativesDropdown;
+                break;
+
+            case "PopUpCountryButton":
+                myElement = PopUpCountryButton;
+                break;
+
+            case "PopUpAddButton":
+                myElement = PopUpAddButton;
+                break;
+
+            case "SaveButton":
+                myElement = SaveButton;
+                break;
+
+            case "PopUpEntryFromButton":
+                myElement = PopUpEntryFromButton;
+                break;
+
+            case "EnrollmentSaveButton":
+                myElement = EnrollmentSaveButton;
+                break;
+
+
 
         }
         waitAndClick(myElement);
@@ -144,6 +223,19 @@ public class StudentsPage extends Parent {
             case "DocumentNumberInput":
                 myElement = DocumentNumberInput;
                 break;
+
+            case "PopUpFirstNameInput":
+                myElement = PopUpFirstNameInput;
+                break;
+
+            case "PopUpLastNameInput":
+                myElement = PopUpLastNameInput;
+                break;
+
+            case "PopUpMobilePhoneInput":
+                myElement = PopUpMobilePhoneInput;
+                break;
+
         }
         waitAndSendKeys(myElement, value);
     }

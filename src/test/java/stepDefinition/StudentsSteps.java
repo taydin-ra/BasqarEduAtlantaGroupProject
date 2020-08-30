@@ -1,9 +1,11 @@
 package stepDefinition;
 
 import POMFiles.StudentsPage;
+import Utilities.Driver;
 import cucumber.api.DataTable;
 import cucumber.api.java.en.And;
 import cucumber.api.java.en.Given;
+import org.openqa.selenium.JavascriptExecutor;
 
 import java.util.List;
 
@@ -55,5 +57,22 @@ public class StudentsSteps {
     }
 
 
+    @And("^Select to dropdown menu$")
+    public void selectToDropdownMenu() {
 
+        JavascriptExecutor js = (JavascriptExecutor) Driver.getDriver();
+
+        //This will scroll the page till the element is found
+        js.executeScript("arguments[0].scrollIntoView();", studentsPage.DocumentTypeDropdown);
+        studentsPage.findElementAndClickFunctionality("DocumentTypeDropdown");
+        studentsPage.findElementAndClickFunctionality("Option1");
+
+    }
 }
+
+//          date icin select
+
+//    public void scrollDown(WebElement element) {
+//        JavascriptExecutor js = (JavascriptExecutor) Driver.getDriver();
+//        js.executeScript("arguments[0].scrollIntoView();",element);
+//    }
