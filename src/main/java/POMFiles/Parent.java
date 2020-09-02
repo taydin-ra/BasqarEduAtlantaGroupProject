@@ -5,7 +5,7 @@ import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
-
+//
 public class Parent {
     WebDriverWait wait;
     WebDriver driver;
@@ -22,13 +22,15 @@ public class Parent {
         element.sendKeys(text);
     }
 
+
     //
 
     public void waitAndClick(WebElement element) {
+
         try {
             wait.until(ExpectedConditions.elementToBeClickable(element));
-        } catch (Exception e) {
-            System.out.println(e.getMessage());
+       } catch (Exception e) {
+           System.out.println(e.getMessage());
         }
         element.click();
     }
