@@ -10,9 +10,10 @@ Feature: Students functionality
   Scenario:Create a new student
     Given Navigate to Student Page
     And Click on
-      | StudentButton  |
-      | StudentsButton |
-      | AddButton      |
+      | cookieMessageButton |
+      | StudentButton       |
+      | StudentsButton      |
+      | AddButton           |
     And User sending input to form
       | FirstNameInput | Mina     |
       | LastNameInput  | Yildiran |
@@ -27,11 +28,30 @@ Feature: Students functionality
       | Option1                  |
       | CitizenshipDropdown      |
       | Option5                  |
-      | DocumentTypeDropdown     |
-      | Option1                  |
-
+#      | DocumentTypeDropdown     |
+#      | Option1                  |
+    And Select to dropdown menu
     And User sending input to form
       | DocumentNumberInput | 123456 |
     And Click in the form page
+      | RepresentativesButton   |
+      | PopUpPlusButton         |
+      | RepresentativesDropdown |
+      | Option1                 |
+    And User sending input to form
+      | PopUpFirstNameInput   | Merve      |
+      | PopUpLastNameInput    | Eksilioglu |
+      | PopUpMobilePhoneInput | 2163434753 |
+    And Click in the form page
+      | PopUpCountryButton   |
+      | Option2              |
+      | PopUpAddButton       |
+      | SaveButton           |
+      | PopUpEntryFromButton |
+      | Option2              |
+      | EnrollmentSaveButton |
+
+
+
 
 

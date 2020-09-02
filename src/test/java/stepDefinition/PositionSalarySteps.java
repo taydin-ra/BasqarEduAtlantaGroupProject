@@ -6,6 +6,8 @@ import cucumber.api.java.en.Then;
 import cucumber.api.java.en.When;
 
 public class PositionSalarySteps {
+
+/*
     PositionSalaryPage positionSalaryPage = new PositionSalaryPage();
 
     @And("^Navigate to Position Salary page$")
@@ -32,6 +34,8 @@ public class PositionSalarySteps {
     @Then("^Success message should be displayed$")
     public void successMessageShouldBeDisplayed() {
     }
+
+ */
 }
 
 
