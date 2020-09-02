@@ -5,7 +5,7 @@ Feature: Login functionallty
     Given Navigate to Basqar: "https://test.basqar.techno.study/"
     When Enter the username "daulet2030@gmail.com" and password "TechnoStudy123@"
     And Click on login button
-    Then I am logged in successfully
+     Then I am logged in successfully
 
 
   Scenario Outline: Login  with  invalid username and/or invalid  password
@@ -17,7 +17,7 @@ Feature: Login functionallty
       | username             | password        |
      #Invalid username and valid password
       | daulet203@gmail.com  | TechnoStudy123@ |
-     #Invalid username and valid password
+     #Valid username and Invalid password
       | daulet2030@gmail.com | TechnoStudy123  |
      #Invalid username and password
        | daulet203@gmail.com | TechnoStudy123  |
