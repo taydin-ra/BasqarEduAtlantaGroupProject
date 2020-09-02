@@ -7,6 +7,7 @@ import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
 import org.openqa.selenium.support.ui.ExpectedConditions;
+import org.testng.Assert;
 
 public class NewRegistrationPage extends Parent {
     WebDriver driver;
@@ -15,6 +16,9 @@ public class NewRegistrationPage extends Parent {
     public NewRegistrationPage() {
         PageFactory.initElements(Driver.getDriver(), this);
     }
+
+    @FindBy(css = "a[aria-label='dismiss cookie message']")
+    private WebElement cookieMessageButton;
 
     @FindBy(partialLinkText = "Entrance Exams")
     private WebElement entranceExams;
@@ -41,15 +45,13 @@ public class NewRegistrationPage extends Parent {
     private WebElement studentInformation;
 
 
-    @FindBy(xpath = "//button[@color='accent']")
-    private WebElement saveButton;
     // to click lastname
     @FindBy(xpath = "//ms-text-field[@formcontrolname='lastName']")
     private WebElement lastName;
     // to fill out lastname
     @FindBy(xpath = "//ms-text-field[@formcontrolname='lastName']//input")
     private WebElement lastNameTextBox;
-   // to click firstname
+    // to click firstname
     @FindBy(css = "ms-text-field[formcontrolname='firstName']")
     private WebElement firstName;
     // to fill out firstname
@@ -66,7 +68,7 @@ public class NewRegistrationPage extends Parent {
     // to click personalid
     @FindBy(xpath = "//ms-text-field[@formcontrolname='personalId']")
     private WebElement personalId;
-     // to fill out personal id
+    // to fill out personal id
     @FindBy(xpath = "//ms-text-field[@formcontrolname='personalId']//input")
     private WebElement personalIdTextBox;
 
@@ -91,11 +93,45 @@ public class NewRegistrationPage extends Parent {
     @FindBy(css = ".cdk-overlay-pane mat-option:first-child")
     private WebElement nationalityOption;
 
-    @FindBy(partialLinkText = "Relative Info")
+    @FindBy(xpath = "//div[contains(text(),'Relative Info')]")
     private WebElement relativeInfo;
 
+    @FindBy(css = "mat-select[aria-label='Representative']")
+    private WebElement representative;
+
+    @FindBy(xpath = "//mat-option//span[contains(text(),'Father')]")
+    private WebElement representativeFather;
+
+    @FindBy(xpath = "//ms-text-field[@formcontrolname='lastName']//input")
+    private WebElement relativeLastName;
+
+    @FindBy(xpath = "//ms-text-field[@formcontrolname='firstName']//input")
+    private WebElement relativeFirstName;
+
+    @FindBy(xpath = "(//input[@data-placeholder='Mobile Phone'])[1]")
+    private WebElement relativePhoneNumber;
+
+    @FindBy(xpath = "(//ms-text-field[@formcontrolname='email']//input)[1]")
+    private WebElement relativeEmail;
+
+    @FindBy(xpath = "(//mat-select[@aria-label='Country'])[1]")
+    private WebElement country;
+
+    @FindBy(xpath = "//mat-option//span[contains(text(),' Kazakhstan ')]")
+    private WebElement countryKazakhstan;
+
+    @FindBy(xpath = "//button[@color='accent']")
+    private WebElement saveButton;
+
+    @FindBy(xpath = "//div[contains(text(),'successfully')]")
+    private WebElement SuccessfullyMessage;
+
+    @FindBy(xpath = "//div[contains(text(),'Error')]")
+    private WebElement ErrorMessage;
+
+
     public void FirstName(String value) throws InterruptedException {
-       // clickOnFunctionalities(firstName);
+        clickOnFunctionalities(firstName);
         Thread.sleep(2000);
         firstNameTextBox.sendKeys(value);
     }
@@ -120,7 +156,7 @@ public class NewRegistrationPage extends Parent {
     public void dateOfBirth(String value) throws InterruptedException {
         clickOnFunctionalities(dateOfBirth);
         Thread.sleep(2000);
-       dateOfBirthTextBox.sendKeys(value);
+        dateOfBirthTextBox.sendKeys(value);
     }
 
     public void ClickOnCitizen() throws InterruptedException {
@@ -135,11 +171,61 @@ public class NewRegistrationPage extends Parent {
 
     }
 
+    public void ClickOnRelativeInfo() {
+        clickOnFunctionalities(relativeInfo);
+
+    }
+
+
+    public void ClickOnRepresetative() throws InterruptedException {
+        clickOnFunctionalities(representative);
+        Thread.sleep(2000);
+        clickOnFunctionalities(representativeFather);
+    }
+
+    public void relativeLastName(String value) throws InterruptedException {
+        clickOnFunctionalities(relativeLastName);
+        Thread.sleep(2000);
+        lastNameTextBox.sendKeys(value);
+    }
+
+    public void relativeFirstName(String value) throws InterruptedException {
+        clickOnFunctionalities(relativeFirstName);
+        Thread.sleep(2000);
+        firstNameTextBox.sendKeys(value);
+    }
+
+    public void relativePhoneNumber(String value) throws InterruptedException {
+        clickOnFunctionalities(relativePhoneNumber);
+        Thread.sleep(2000);
+        relativePhoneNumber.sendKeys(value);
+    }
+
+
+    public void relativeEmail(String value) throws InterruptedException {
+        clickOnFunctionalities(relativeEmail);
+        Thread.sleep(2000);
+        relativeEmail.sendKeys(value);
+    }
+
+    public void ClickOnCountry() {
+        clickOnFunctionalities(country);
+        clickOnFunctionalities(countryKazakhstan);
+    }
+
+    public void clickSaveButton() {
+        clickOnFunctionalities(saveButton);
+    }
+
+
     WebElement myElement;
 
     public void findElementAndClickFunctionality(String elementName) {
 
         switch (elementName) {
+            case "cookieMessageButton":
+                myElement = cookieMessageButton;
+                break;
 
             case "entranceExams":
                 myElement = entranceExams;
@@ -187,11 +273,19 @@ public class NewRegistrationPage extends Parent {
             case "relativeInfo":
                 myElement = relativeInfo;
                 break;
+            case "representative":
+                myElement = representative;
+                break;
+            case "country":
+                myElement = country;
+                break;
             case "dateOfBirth":
                 myElement = dateOfBirth;
                 break;
 
+
         }
+
         waitAndClick(myElement);
     }
 
@@ -214,8 +308,54 @@ public class NewRegistrationPage extends Parent {
             case "dateOfBirth":
                 myElement = dateOfBirth;
                 break;
+
+            case "relativeLastName":
+                myElement = relativeLastName;
+                break;
+
+            case "relativeFirstName":
+                myElement = relativeFirstName;
+                break;
+            case "relativePhoneNumber":
+                myElement = relativePhoneNumber;
+                break;
+            case "relativeEmail":
+                myElement = relativeEmail;
+                break;
+
+
         }
         SendKeys(myElement, value);
+    }
+
+    public void waitUntilVisible(WebElement elementToWait) {
+
+        wait.until(ExpectedConditions.visibilityOf(elementToWait));
+
+    }
+
+    public void ElementContainsText(WebElement element, String myText) {
+
+        waitUntilVisible(element);
+        Assert.assertTrue(element.getText().contains(myText));
+    }
+
+    public void findElementAndVerifyElementContainText(String elementName, String WhichText) {
+
+        switch (elementName) {
+            case "SuccessfullyMessage":
+                myElement = SuccessfullyMessage;
+                break;
+            case "ErrorMessage":
+                myElement = ErrorMessage;
+                break;
+
+        }
+
+//            Creating one method in parent class which is get the element and it is containing the WhichText(parameter)
+
+        ElementContainsText(myElement, WhichText);
+
     }
 }
 
