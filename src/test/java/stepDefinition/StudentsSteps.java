@@ -5,6 +5,7 @@ import Utilities.Driver;
 import cucumber.api.DataTable;
 import cucumber.api.java.en.And;
 import cucumber.api.java.en.Given;
+import cucumber.api.java.en.Then;
 import org.openqa.selenium.JavascriptExecutor;
 
 import java.util.List;
@@ -67,6 +68,11 @@ public class StudentsSteps {
         studentsPage.findElementAndClickFunctionality("DocumentTypeDropdown");
         studentsPage.findElementAndClickFunctionality("Option1");
 
+    }
+
+    @Then("^Success message should be displayed$")
+    public void successMessageShouldBeDisplayed() {
+        studentsPage.findElementAndVerifyElementContainText("SuccessfullyMessage" , "successfully");
     }
 }
 
