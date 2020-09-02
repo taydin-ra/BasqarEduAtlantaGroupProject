@@ -18,7 +18,6 @@ public class LoginPage extends Parent{
     private WebElement password;
     @FindBy(css = "[aria-label=LOGIN]")
     private WebElement loginButton;
-
     @FindBy(xpath = "//span[contains(@class,'username')]")
     private WebElement verifyUserName;
 
