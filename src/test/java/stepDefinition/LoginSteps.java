@@ -18,7 +18,6 @@ public class LoginSteps {
 
     @Given("^Navigate to Basqar: \"([^\"]*)\"$")
     public void navigate_to_Basqar(String url) {
-
         Driver.getDriver().get(url);
         Driver.getDriver().manage().window().maximize();
 
