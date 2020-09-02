@@ -21,6 +21,11 @@ public class LoginPage extends Parent{
     @FindBy(xpath = "//span[contains(@class,'username')]")
     private WebElement verifyUserName;
 
+    @FindBy(xpath = "//div[@id='toast-container']")
+    private WebElement invalidUserOrPassword;
+
+
+
     public void findElementAndClick(String element) {
         switch (element) {
             case "loginButton":
@@ -48,6 +53,9 @@ public class LoginPage extends Parent{
         switch (element) {
             case "verifyUserName":
                 myElement = verifyUserName;
+                break;
+            case "invalidUserOrPassword":
+                myElement = invalidUserOrPassword;
                 break;
 
         }
