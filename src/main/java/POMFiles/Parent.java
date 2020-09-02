@@ -1,6 +1,7 @@
 package POMFiles;
 
 import Utilities.Driver;
+import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.ui.ExpectedConditions;
@@ -25,6 +26,7 @@ public class Parent {
     public void waitAndClick(WebElement element) {
         wait.until(ExpectedConditions.elementToBeClickable(element)).click();
     }
+
 
     public String waitAndGetText(WebElement element){
 
