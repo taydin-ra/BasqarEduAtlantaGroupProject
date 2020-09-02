@@ -15,8 +15,9 @@ Feature: Students functionality
       | StudentsButton      |
       | AddButton           |
     And User sending input to form
-      | FirstNameInput | Mina     |
+      | FirstNameInput | Minas    |
       | LastNameInput  | Yildiran |
+      | StudentIdInput | 5353     |
     And Click in the form page
       | GenderDropdown           |
       | Option2                  |
@@ -50,8 +51,35 @@ Feature: Students functionality
       | PopUpEntryFromButton |
       | Option2              |
       | EnrollmentSaveButton |
+    Then Success message should be displayed
 
+  Scenario:Edit a new student
+    Given Navigate to Student Page
+    And Click on
+      | StudentButton  |
+      | StudentsButton |
+    And User sending input to form
+      | StudentIdSearchInput | 5353 |
+    And Click in the form page
+      | SearchButton |
+      | EditButton   |
+    And User sending input to form
+      | FirstNameInput | Mina |
+    And Click in the form page
+      | SaveButton |
+    Then Success message should be displayed
 
-
+  Scenario:Delete a new student
+    Given Navigate to Student Page
+    And Click on
+      | StudentButton  |
+      | StudentsButton |
+    And User sending input to form
+      | StudentIdSearchInput | 5353 |
+    And Click in the form page
+      | SearchButton |
+      | DeleteButton |
+      | YesButton    |
+    Then Success message should be displayed
 
 
