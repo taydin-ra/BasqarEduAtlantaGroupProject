@@ -6,7 +6,7 @@ import cucumber.api.java.en.*;
 import org.testng.Assert;
 import java.util.List;
 
-public class SetupSchoolsSteps {
+public class SetupSchoolsStepsTest {
     SetupSchoolsPage schools = new SetupSchoolsPage();
 
     @And("^I click on \"([^\"]*)\" button on cokkies dialog$")
