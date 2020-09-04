@@ -22,8 +22,8 @@ Feature: Checking all functionality of Setup Schools menu
     And I select currency from "Default Currency" drop down list
       | USD |
     And I select time zone from "Default Time Zone" drop down list
-    |+00:00 - GMT|
-#      | -04:00 - US/Eastern |
+#    |+00:00 - GMT|
+      | -04:00 - US/Eastern |
     And Select language from "Default Language" drop down list
       | English |
     And I press "Save" button
@@ -39,7 +39,7 @@ Feature: Checking all functionality of Setup Schools menu
     Then I should get "School successfully updated" message
     When I press the left arrow button to go to school list page
     Then I should see the new school name on the list
-    |Deneme High School |
+      | Deneme High School |
 
   Scenario: Editing an existing school
     Given I click "Edit" button for Deneme High School from the list
@@ -53,10 +53,10 @@ Feature: Checking all functionality of Setup Schools menu
     Then I should see the updated name
       | Erzincan High School |
 
-    Scenario: Deleting the school
+  Scenario: Deleting the school
     Given I click "Delete" button
     And I click on "Yes" button on pop-up dialog
     Then I should get "School successfully deleted" message
 
-#User should be able to  turn on/off the “Active” button
+
 
