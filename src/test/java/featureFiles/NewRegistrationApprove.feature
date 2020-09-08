@@ -16,14 +16,27 @@ Feature: New registration approve test
       | chooseExam               |
       | Option2                  |
       | studentInformation       |
+
     And I enter text to following elements
       | lastName    | Ozkan      |
       | firstName   | Ersin      |
       | personalId  | 123        |
-      | dateOfBirth | 01/01/1982 |
+      | dateOfBirth | 01/01/1978 |
     And I click on following elements gender, citizenship and nationality in the Student information
+    And I click on following elements in the relative info page
+      | relativeInfo   |
+      | representative |
+      | Father         |
+      | country        |
+      | Kazakhstan     |
+
     And I fill up following elements in the relative info page
-    And I click on student info save button
+      | relativeLastName    | mehmet            |
+      | relativeFirstName   | ahhmet            |
+      | relativePhoneNumber | 12332425          |
+      | relativeEmail       | mehmetahmet@gmail |
+
+    And I click on save button
     Then Created succesfuly New registration Approve
 
 

@@ -1,22 +1,19 @@
 package stepDefinition;
 
 import POMFiles.SetupSchoolsPage;
-import Utilities.Driver;
 import cucumber.api.DataTable;
-import cucumber.api.PendingException;
 import cucumber.api.java.en.*;
 import org.testng.Assert;
-
 import java.util.List;
 
-public class SetupSchoolsSteps {
+public class SetupSchoolsStepsTest {
     SetupSchoolsPage schools = new SetupSchoolsPage();
 
     @And("^I click on \"([^\"]*)\" button on cokkies dialog$")
     public void iClickOnButtonOnCokkiesDialog(String gotIt) {
         try {
             schools.findElementAndClick(gotIt);
-        }catch(Exception e){
+        } catch (Exception e) {
             System.out.println("Cookies already clicked");
         }
     }
@@ -103,8 +100,8 @@ public class SetupSchoolsSteps {
         //aria-selected atribute value becomes true if it was selected, i check if it is selected
 //        Assert.assertEquals("true", schools.addressInfoPage.getAttribute("aria-selected"));
 
-        String attribute = schools.findElementAndGetAttribute(schools.addressInfoPage,"aria-selected");
-        Assert.assertEquals("true",attribute );
+        String attribute = schools.findElementAndGetAttribute(schools.addressInfoPage, "aria-selected");
+        Assert.assertEquals("true", attribute);
     }
 
     @When("^I enter the \"([^\"]*)\" and \"([^\"]*)\"$")
@@ -153,41 +150,41 @@ public class SetupSchoolsSteps {
 
     // Scenario Editing an existing school
     @Given("^I click \"([^\"]*)\" button for Deneme High School from the list$")
-    public void i_click_button_for_Deneme_High_School_from_the_list(String editButton)  {
+    public void i_click_button_for_Deneme_High_School_from_the_list(String editButton) {
 
-schools.findElementAndClick(editButton);
+        schools.findElementAndClick(editButton);
 
     }
 
     @Then("School Info page should be open$")
-    public void page_should_be_open()  {
-       String attribute = schools.findElementAndGetAttribute(schools.schoolInfoPage,"aria-selected");
-        Assert.assertEquals("true",attribute );
+    public void page_should_be_open() {
+        String attribute = schools.findElementAndGetAttribute(schools.schoolInfoPage, "aria-selected");
+        Assert.assertEquals("true", attribute);
     }
 
     @When("^I enter new \"([^\"]*)\" and new \"([^\"]*)\"$")
-    public void i_enter_new_and_new(String newName, String newShortName, DataTable table)  {
+    public void i_enter_new_and_new(String newName, String newShortName, DataTable table) {
         List<String> data = table.asList(String.class);
-        schools.findElementAndSendKeys(newName,data.get(0));
-        schools.findElementAndSendKeys(newShortName,data.get(1));
+        schools.findElementAndSendKeys(newName, data.get(0));
+        schools.findElementAndSendKeys(newShortName, data.get(1));
 
     }
 
     @Then("^I should see the updated name$")
-    public void i_should_see_the_updated_name(DataTable table)  {
+    public void i_should_see_the_updated_name(DataTable table) {
         List<String> data = table.asList(String.class);
         String schoolNameOnList = schools.findElementAndGetText(data.get(0));
         Assert.assertEquals(schoolNameOnList, data.get(0));
     }
 
     @Given("^I click \"([^\"]*)\" button$")
-    public void iClickButton(String delete){
-schools.findElementAndClick(delete);
+    public void iClickButton(String delete) {
+        schools.findElementAndClick(delete);
 
     }
 
     @And("^I click on \"([^\"]*)\" button on pop-up dialog$")
     public void iClickOnButtonOnPopUpDialog(String yes) {
-schools.findElementAndClick(yes);
+        schools.findElementAndClick(yes);
     }
 }

@@ -16,6 +16,7 @@ public class NewRegistrationSteps extends Parent {
 
     @Given("^Navigate to Entrance Exams$")
     public void navigate_to_Entrance_Exams() {
+        newRegistrationPage.findElementAndClickFunctionality("cookieMessageButton");
         newRegistrationPage.findElementAndClickFunctionality("entranceExams");
     }
 
@@ -63,23 +64,44 @@ public class NewRegistrationSteps extends Parent {
     }
 
 
-
     @Then("^I fill up following elements in the relative info page$")
-    public void i_fill_up_following_elements_in_the_relative_info_page() throws Throwable {
+    public void i_fill_up_following_elements_in_the_relative_info_page(DataTable elementsAndValues) throws Throwable {
+        Map<String, String> elementsAndValuesList = elementsAndValues.asMap(String.class, String.class);
+
+        newRegistrationPage.relativeLastName(elementsAndValuesList.get("relativeLastName"));
+        newRegistrationPage.relativeFirstName(elementsAndValuesList.get("relativeFirstName"));
+        newRegistrationPage.relativePhoneNumber(elementsAndValuesList.get("relativePhoneNumber"));
+        newRegistrationPage.relativeEmail(elementsAndValuesList.get("relativeEmail"));
+
+//        List<List<String>> elementAndValueList = elementsAndValues.asLists(String.class);
+//
+//        for(int i = 0 ; i < elementAndValueList.size() ; i++){
+//
+//           newRegistrationPage.findElementAndSendKeysFunction(elementAndValueList.get(i).get(0),elementAndValueList.get(i).get(1) );
+
+       // }
+    }
+
+
+    @Then("^I click on following elements in the relative info page$")
+    public void i_click_on_following_elements_in_the_relative_info_page(DataTable arg1) throws Throwable {
+        newRegistrationPage.ClickOnRelativeInfo();
+        newRegistrationPage.ClickOnRepresetative();
+        newRegistrationPage.ClickOnCountry();
 
     }
 
 
-
-    @Then("^I click on student info save button$")
+    @Then("^I click on save button$")
     public void i_click_on_student_info_save_button() throws Throwable {
+        newRegistrationPage.clickSaveButton();
 
     }
-
 
 
     @Then("^Created succesfuly New registration Approve$")
     public void created_succesfuly_New_registration_Approve() {
+        newRegistrationPage.findElementAndVerifyElementContainText("SuccessfullyMessage" , "successfully");
 
     }
 

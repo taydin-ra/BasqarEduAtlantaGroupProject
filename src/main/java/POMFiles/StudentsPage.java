@@ -4,6 +4,8 @@ import Utilities.Driver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
+import org.openqa.selenium.support.ui.ExpectedConditions;
+import org.testng.Assert;
 
 public class StudentsPage extends Parent {
     public StudentsPage() {
@@ -28,6 +30,9 @@ public class StudentsPage extends Parent {
 
     @FindBy(xpath = "//ms-text-field[@formcontrolname='lastName']/input")
     private WebElement LastNameInput;
+
+    @FindBy(xpath = "//input[@data-placeholder='Student ID']")
+    private WebElement StudentIdInput;
 
     @FindBy(xpath = "//mat-select[@formcontrolname='gender']")
     private WebElement GenderDropdown;
@@ -99,6 +104,27 @@ public class StudentsPage extends Parent {
     private WebElement EnrollmentSaveButton;
 
     // //*[@role='alertdialog']//.. alert icin bak
+
+    @FindBy(xpath = "//div[contains(text(),'successfully')]")
+    private WebElement SuccessfullyMessage;
+
+    @FindBy(xpath = "//div[contains(text(),'Error')]")
+    private WebElement ErrorMessage;
+
+    @FindBy(xpath = "(//div[@class='search-container']//ms-text-field//input)[1]")
+    private WebElement StudentIdSearchInput;
+
+    @FindBy(css = "button[class='mat-focus-indicator mat-raised-button mat-button-base mat-accent']")
+    private WebElement SearchButton;
+
+    @FindBy(xpath = "//*[@data-icon='edit']")
+    private WebElement EditButton;
+
+    @FindBy(css = "svg[data-icon='trash-alt']")
+    private WebElement DeleteButton;
+
+    @FindBy(css = "button[type='submit']")
+    private WebElement YesButton;
 
 
 
@@ -202,6 +228,18 @@ public class StudentsPage extends Parent {
                 myElement = EnrollmentSaveButton;
                 break;
 
+            case "EditButton":
+                myElement = EditButton;
+                break;
+
+            case "DeleteButton":
+                myElement = DeleteButton;
+                break;
+
+            case "YesButton":
+                myElement = YesButton;
+                break;
+
 
 
         }
@@ -220,6 +258,10 @@ public class StudentsPage extends Parent {
                 myElement = LastNameInput;
                 break;
 
+            case "StudentIdInput":
+                myElement = StudentIdInput;
+                break;
+
             case "DocumentNumberInput":
                 myElement = DocumentNumberInput;
                 break;
@@ -236,8 +278,41 @@ public class StudentsPage extends Parent {
                 myElement = PopUpMobilePhoneInput;
                 break;
 
+            case "StudentIdSearchInput":
+                myElement = StudentIdSearchInput;
+                break;
+
+
         }
         waitAndSendKeys(myElement, value);
+    }
+    public void waitUntilVisible(WebElement elementToWait){
+
+        wait.until(ExpectedConditions.visibilityOf(elementToWait));
+
+    }
+    public void ElementContainsText(WebElement element , String myText){
+
+        waitUntilVisible(element);
+        Assert.assertTrue(element.getText().contains(myText));
+    }
+
+    public void findElementAndVerifyElementContainText(String elementName , String WhichText){
+
+        switch (elementName){
+            case "SuccessfullyMessage":
+                myElement=SuccessfullyMessage;
+                break;
+            case "ErrorMessage":
+                myElement=ErrorMessage;
+                break;
+
+        }
+
+//            Creating one method in parent class which is get the element and it is containing the WhichText(parameter)
+
+        ElementContainsText(myElement , WhichText);
+
     }
 
 

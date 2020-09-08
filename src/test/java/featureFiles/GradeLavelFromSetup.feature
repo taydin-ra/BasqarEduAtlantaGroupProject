@@ -9,12 +9,3 @@ Feature: Create a new grade level
   Scenario: opening grade lavel
     When go to setup menu
     When Chose garde lavel from Parametrs and click
-
-    And I enter text to following elements
-      | dateOfBirth | 01/01/1982 |
-      | personalId  | 123        |
-    And I click on following elements
-      | gender       |
-      | citizenship  |
-      | nationality  |
-      | relativeInfo |
