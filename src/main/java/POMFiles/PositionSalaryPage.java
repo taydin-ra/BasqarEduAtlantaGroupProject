@@ -55,28 +55,28 @@ public class PositionSalaryPage extends Parent {
        waitAndClick(myElement);
         //
     }
-
-    public void clickHumanResource(){
-        clickOnFunctionalities(HumanResourcesButton);
-    }
-    public void clickSetUp3(){
-        clickOnFunctionalities(Setup3Button);
-    }
-    public void clickPositionSalary(){
-        clickOnFunctionalities(PositionSalary1Button);
-    }
-
-    public void clickAddButton(){
-        clickOnFunctionalities(AddButton);
-    }
-    public void findElementAndSendKeys(String elementName, String text ){
-        switch (elementName){
-            case "NameInput":
-                myElement=NameInput;
-                break;
-        }
-        waitAndSendKeys(myElement,text);
-    }
+//
+//    public void clickHumanResource(){
+//        clickOnFunctionalities(HumanResourcesButton);
+//    }
+//    public void clickSetUp3(){
+//        clickOnFunctionalities(Setup3Button);
+//    }
+//    public void clickPositionSalary(){
+//        clickOnFunctionalities(PositionSalary1Button);
+//    }
+//
+//    public void clickAddButton(){
+//        clickOnFunctionalities(AddButton);
+//    }
+//    public void findElementAndSendKeys(String elementName, String text ){
+//        switch (elementName){
+//            case "NameInput":
+//                myElement=NameInput;
+//                break;
+//        }
+//        waitAndSendKeys(myElement,text);
+//    }
 
 
 }
