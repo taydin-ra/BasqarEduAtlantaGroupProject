@@ -117,8 +117,7 @@ public class SetupSchoolsAPISteps {
                 .body(school)
                 .when()
                 .post("/school-service/api/schools")
-                .then()
-                .statusCode(201)
+                .then().statusCode(201)
         ;
 
     }
