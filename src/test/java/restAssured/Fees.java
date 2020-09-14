@@ -36,7 +36,7 @@ public class Fees {
 
         FeesType feesType = new FeesType();
         feesType.setName("Merve");
-        feesType.setCode("Bio101");
+        feesType.setCode("Bio1012");
         feesType.setBudgetAccountIntegrationCode(2020101);
         feesType.setPriority(4);
         feesType.setActive(true);
@@ -54,14 +54,14 @@ public class Fees {
 
         // search my fee
 
-        int searchItem = feesType.getPriority();
-
+//        int searchItem = feesType.getPriority();
+   
         given()
                 .cookies(cookies)
                 .contentType(ContentType.JSON)
-                .body(searchItem)
+                .body(feesType)
                 .when()
-                .put("https://test.basqar.techno.study/school-service/api/fee-types/search")
+                .post("https://test.basqar.techno.study/school-service/api/fee-types/search")
                 .then()
                 .log().body()
                 .statusCode(200);
