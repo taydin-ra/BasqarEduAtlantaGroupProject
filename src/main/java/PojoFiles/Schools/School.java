@@ -11,6 +11,15 @@ public class School {
     private Address address;
     private ContactInfo contactInfo;
     private boolean active;
+
+    public String getId() {
+        return id;
+    }
+
+    public void setId(String id) {
+        this.id = id;
+    }
+
     private MailServer mailServer;
     private SmsServer smsServer;
     private String timeZone;
@@ -24,13 +33,6 @@ public class School {
     private String payPalSettings;
   //  private boolean bbbserverEnabled;
 
-    public String getId() {
-        return id;
-    }
-
-    public void setId(String id) {
-        this.id = id;
-    }
 
     public String getName() {
         return name;

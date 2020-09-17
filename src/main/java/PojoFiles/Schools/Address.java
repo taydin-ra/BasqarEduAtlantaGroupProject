@@ -35,6 +35,16 @@ public class Address {
         return country;
     }
 
+    @Override
+    public String toString() {
+        return "Address{" +
+                "city=" + city +
+                ", postalCode='" + postalCode + '\'' +
+                ", street='" + street + '\'' +
+                ", country=" + country +
+                '}';
+    }
+
     public void setCountry(Country country) {
         this.country = country;
     }

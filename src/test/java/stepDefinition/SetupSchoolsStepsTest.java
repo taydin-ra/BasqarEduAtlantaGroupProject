@@ -187,4 +187,6 @@ public class SetupSchoolsStepsTest {
     public void iClickOnButtonOnPopUpDialog(String yes) {
         schools.findElementAndClick(yes);
     }
+
+
 }

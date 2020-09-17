@@ -6,10 +6,24 @@ public class City {
 
     private String id;
     private Country country;
+
+    @Override
+    public String toString() {
+        return "City{" +
+                "id='" + id + '\'' +
+                ", country=" + country +
+                ", name='" + name + '\'' +
+                ", shortName='" + shortName + '\'' +
+                ", translateName=" + translateName +
+                ", code='" + code + '\'' +
+                '}';
+    }
+
     private String name;
     private String shortName;
     private List<TranslateName> translateName;
     private String code;
+
 
     public String getId() {
         return id;

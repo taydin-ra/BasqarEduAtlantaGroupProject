@@ -3,8 +3,17 @@ package PojoFiles.Schools;
 public class TranslateName {
 
     private String lang;
-    private String defaultLang;
+    private boolean defaultLang;
     private String data;
+
+    @Override
+    public String toString() {
+        return "TranslateName{" +
+                "lang='" + lang + '\'' +
+                ", defaultLang=" + defaultLang +
+                ", data='" + data + '\'' +
+                '}';
+    }
 
     public String getLang() {
         return lang;
@@ -14,11 +23,11 @@ public class TranslateName {
         this.lang = lang;
     }
 
-    public String getDefaultLang() {
+    public boolean getDefaultLang() {
         return defaultLang;
     }
 
-    public void setDefaultLang(String defaultLang) {
+    public void setDefaultLang(boolean defaultLang) {
         this.defaultLang = defaultLang;
     }
 

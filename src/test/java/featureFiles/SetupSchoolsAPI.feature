@@ -14,35 +14,27 @@ Feature:Testing API functionality of Schools Admin page
   Scenario: Crating new school with API
     Given Set the path of Schools page: "/school-service/api/schools"
     Then I will fill the School POJO class with given data
-      | Denemeeeecccc High School |
-      | DHS                   |
-      | mask 2                |
-      | USD                   |
-      | GMT                   |
-#      | -04:00 - US/Eastern      |
-      | en                    |
-      | Burasi Cikmaz Sokak   |
-#      | United States of America |
-#      | Clifton                  |
-      | 30009                 |
-    When I POST the POJO class
-#    And I should get Satatus Code 200
-#    When Connect to server with POST and get the list of Schools
-#    Then Check if the School was created
-#
-#  Scenario: Editing a School
-#    Given Set the path of Schools page: "/school-service/api/schools/search"
-#    Then I will edit the School POJO class with given data
-#      | Erzincan High School |
-#      | EHS                  |
-#    And I should get Satus code 200
-#    When Connect to server with POST and get the list of Schools
-#    Then Check if the School name has changed
-#
-#  Scenario: Deleting a school
-#    Given I will get the list of all schools as JSON format by using API
-#    When I select a school from the list
-#    Then I will DELETE with API
-#    And I should get Satus code 200
-#    When Connect to server with POST and get the list of Schools
-#    Then Check if the School name was deleted
+      | Istanbul High School |
+      | DHS                  |
+      | mask 2               |
+      | USD                  |
+      | GMT                  |
+      | en                   |
+      | Burasi Cikmaz Sokak  |
+      | United States of America |
+      | Clifton              |
+      | 30009                |
+    When I POST the POJO class and Check if Status Code is 201
+    Then Check if the School was created
+
+  Scenario: Editing a School
+    Given Set the path of Schools page: "/school-service/api/schools"
+    Then I will edit the School POJO class with given data
+      | ErzincanCCCC High School |
+      | EHS                  |
+    And I POST the new POJO class and Check if Status Code is 200
+    Then Check if the School name has changed
+
+  Scenario: Deleting a school
+    Given I will DELETE with first school from the list with API
+    Then Check if the School name was deleted

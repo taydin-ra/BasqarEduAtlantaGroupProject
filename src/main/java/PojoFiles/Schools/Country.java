@@ -9,6 +9,17 @@ public class Country {
     private List<TranslateName> translateName;
     private String code;
 
+    @Override
+    public String toString() {
+        return "Country{" +
+                "id='" + id + '\'' +
+                ", name='" + name + '\'' +
+                ", shortName='" + shortName + '\'' +
+                ", translateName=" + translateName +
+                ", code='" + code + '\'' +
+                '}';
+    }
+
     public String getId() {
         return id;
     }
